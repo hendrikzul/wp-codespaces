@@ -1,2 +1,3 @@
-wordpress_data/
 db_data/
+src/wp-content/uploads/
+src/wp-config.php
