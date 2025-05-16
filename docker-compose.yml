@@ -5,13 +5,15 @@ services:
     image: wordpress:latest
     ports:
       - 8080:80
+    volumes:
+      - ./src:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpuser
       WORDPRESS_DB_PASSWORD: wppass
       WORDPRESS_DB_NAME: wpdb
-    volumes:
-      - wordpress_data:/var/www/html
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7
@@ -25,5 +27,4 @@ services:
       - db_data:/var/lib/mysql
 
 volumes:
-  wordpress_data:
   db_data:
